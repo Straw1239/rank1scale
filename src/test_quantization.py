@@ -93,6 +93,8 @@ class QMatmul(torch.autograd.Function):
     ctx.save_for_backward(xq, yq)
     ctx.bits = bits
     return torch.matmul(xq, yq)
+  
+  @staticmethod
   def backward(ctx, grad_output):
     xq, yq = ctx.saved_tensors
     bits = ctx.bits
